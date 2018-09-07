@@ -8,6 +8,7 @@ import { FileItem } from '../models/file-item';
 })
 export class FirebaseService {
 
+  private pruebagithub:string = "logrado";
   private CARPETA_IMAGENES = 'img';
 
   constructor(private db: AngularFirestore) { }
