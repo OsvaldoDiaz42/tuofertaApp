@@ -1,0 +1,10 @@
+.jumbotron {
+    background-color: darkcyan;
+    border-color: black;
+    text-align: center;
+}
+
+.row {
+    border: 30px;
+    border-color: brown;
+}

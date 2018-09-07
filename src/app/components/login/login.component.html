@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <!-- <strong><h3>TuOfertaApp</h3></strong> -->
+            <img src="assets/img/logo.png" alt=""> 
+        </div>
+        
+        <div class="col-2"></div>
+        <div class="col-4">
+            <div class="formulario">
+                <div class="form-top">
+                    <div class="form-top-left">
+                       
+                    </div>
+                    <div class="form-top-right">
+                        <i class="fa fa-key"></i>
+                    </div>
+                </div >
+                <div class="form-bottom" *ngFor="let i of persona">
+                    <form role="form" action="" method="post" class="login-form" (ngSubmit) = "consultar(forma)" #forma="ngForm">
+                        <div class="form-group">
+                        <label class="sr-only" for="form-username">Correo</label>
+                        <input type="text" name="correo" placeholder="Correo" class="form-control" id="correo" [(ngModel)] = "i.correo" [ngModelOptions]="{standalone: true}">
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="form-password">Contraseña</label>
+                            <input type="password" name="password" placeholder="Contraseña" class="form-control" id="password" [(ngModel)] = "i.contrasena" [ngModelOptions]="{standalone: true}">
+                        </div>
+                        <button class="btn btn-outline-success" type="submit" >Ingresar</button>
+                        <button class="btn btn-outline-info" routerLink="/registrarPersona" type="button1"><small>Registrarme</small></button>
+                    </form>
+                </div>
+                <div class=" social-login">
+                    <div class="social-login-buttons">
+            
+                        <button class="btn btn-danger btnsociallogin" (click)="socialSignIn('google')"><i class="fab fa-google"></i></button>
+                        <button class="btn btn-primary btnsociallogin" (click)="socialSignIn('facebook')"><i class="fab fa-facebook-f"></i></button>    
+                        <!-- <button class="btn btn-danger" (click)="signOut()"><i></i> </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+

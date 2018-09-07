@@ -1,0 +1,60 @@
+<div>
+    <!-- <button [routerLink]="['/registrarNegocio', 'asdfkasñldfjañs']" type="button" class="btn btn-success" ><i class="fas fa-plus"></i></button>  -->
+    <button (click)="registrar()" type="button" class="btn btn-success" ><i class="fas fa-plus"></i></button> 
+    
+  </div>
+  <div style="aligned:center;" >
+    <table class="table col-sm-12">
+        <thead>
+            <tr>
+              <!-- <th scope="col-sm-1">ID</th> -->
+              <!-- <th scope="col-sm-1">idadmin</th> -->
+              <th scope="col-sm-1">FOTO</th>
+              <th scope="col-sm-1">NOMBRE</th>
+              <th scope="col-sm-1">NIT</th>
+              <th scope="col-sm-2">CORREO</th>
+              <th scope="col-sm-1">TIPO</th>
+              <th scope="col-sm-1">TELEFONO</th>
+              <th scope="col-sm-1">UBICACION</th>
+              <th scope="col-sm-1"></th>
+            </tr>
+          </thead>
+          <tbody>
+             
+              
+            
+              
+            
+            <tr *ngFor="let i of respuesta">
+              <!-- <td>{{i.idnegocio}}</td> -->
+              <!-- <td>{{i.idadmin}}</td> -->
+              <td>
+                  <!-- <img src="https://firebasestorage.googleapis.com/v0/b/sprint1-2c72b.appspot.com/o/img%2FT.png?alt=media&token=3919eaa4-e80c-44d2-bb69-fdd8953f48b2"> -->
+                  <img class="img-fluid" width="100px" height="100px" [src]="i.foto">              
+                <!-- {{i.foto}} -->
+              
+              </td> 
+              <td>
+                  <button type="button" class="btn btn-link"  [routerLink]="['/ofertasPropias', i.idnegocio]" >{{i.nombre_negocio}}</button>
+              </td>
+              
+              <!-- <td>{{i.nombre_negocio}}</td>  -->
+              <td>{{i.nit}}</td> 
+              <td>{{i.correo}}</td> 
+              <td>{{i.tipo}}</td> 
+              <td>{{i.telefono}}</td> 
+              <!-- <td>{{i.genero}}</td>  -->
+              <!-- <td>{{i.foto}}</td>  -->
+              <td>{{i.ubicacion}}</td> 
+              <!-- <td>{{i.detalle}}</td>  -->
+              <td>
+                <button type="button" class="btn btn-danger" (click)="deletenegocio(i.idnegocio)" ><i class="far fa-trash-alt"></i></button>
+               <button type="button" class="btn btn-info" (click)="actualizar(i.idnegocio)"> <i class="fas fa-marker"></i> </button>
+              </td>
+              
+            </tr>
+          </tbody>
+    </table>  
+  </div>
+  
+  

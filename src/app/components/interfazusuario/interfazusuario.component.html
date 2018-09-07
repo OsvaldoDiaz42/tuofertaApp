@@ -1,0 +1,114 @@
+
+
+<div class="jumbotron jumbotron-fluid" *ngFor="let i of respuesta" >
+    <button class="btn btn-danger cerrar" (click)="signOut()"> SALIR <i class="fas fa-window-close"></i></button>
+    <h1 class=" text-center"> BIENVENID@   <strong>{{i.nombre}}</strong></h1> 
+    <nav class="navbar navbar-expand-lg navbar-light">
+        
+      
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li>
+                     <a > <i class="fas fa-search-location"></i> </a> 
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <strong class="item m-2">TIPO DE NEGOCIO</strong>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <input (change)="aplicar(value1.value)" class="m-2" type="checkbox" name="RESTAURANTE" value="RESTAURANTE" #value1> <strong class="item">Restaurante</strong>  <br>
+                        <div class="dropdown-divider"></div>
+                        <input (change)="aplicar(value2.value)" class="m-2" type="checkbox" name="BAR" value="BAR" #value2 > <strong class="item">Bar</strong><br>
+                        <div class="dropdown-divider"></div>
+                        <input (change)="aplicar(value3.value)" class="m-2" type="checkbox" name="ALMACEN" value="ALMACEN" #value3 > <strong class="item">Almacen</strong><br>
+                        <div class="dropdown-divider"></div>
+                        <input (change)="aplicar(value4.value)" class="m-2" type="checkbox" name="HOTEL" value="HOTEL" #value4 >  <strong class="item">hotel</strong> <br>
+                        <div class="dropdown-divider"></div>
+                        <input (change)="aplicar(value5.value)" class="m-2" type="checkbox" name="OTRO" value="OTRO" #value5 > <strong class="item">Otro</strong><br>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <strong class="item m-2">OFERTAS</strong>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </li>
+                
+              </ul>
+              
+            </div>
+    </nav>
+ </div>
+ <!-- <nav class="navbar navbar-light bg-light"> -->
+        <!-- <div class="row"> -->
+            <!-- <strong class="item m-2">TIPO DE NEGOCIO</strong> -->
+            <!-- <form style="color: black"> -->
+                    <!-- <input (change)="aplicar(value1.value)" class="m-2" type="checkbox" name="RESTAURANTE" value="RESTAURANTE" #value1> <strong class="item">Restaurante</strong>  <br>
+                    <input (change)="aplicar(value2.value)" class="m-2" type="checkbox" name="BAR" value="BAR" #value2 > <strong class="item">Bar</strong><br>
+                    <input (change)="aplicar(value3.value)" class="m-2" type="checkbox" name="ALMACEN" value="ALMACEN" #value3 > <strong class="item">Almacen</strong><br>
+                    <input (change)="aplicar(value4.value)" class="m-2" type="checkbox" name="HOTEL" value="HOTEL" #value4 >  <strong class="item">hotel</strong> <br>
+                    <input (change)="aplicar(value5.value)" class="m-2" type="checkbox" name="OTRO" value="OTRO" #value5 > <strong class="item">Otro</strong><br> -->
+            <!-- </form>                     -->
+        <!-- </div> -->
+        <!-- <div class="row">
+                <strong>OFERTAS</strong>
+                <form  style="color: black">
+                         
+                        <input (change)="aplicar(value1.value)" type="checkbox" name="Restaurante" value="Restaurante" #value1> Restaurante <br>
+                        <input (change)="aplicar(value2.value)" type="checkbox" name="Bar" value="Bar" #value2 >Bar<br>
+                        <input (change)="aplicar(value3.value)" type="checkbox" name="Otro" value="Otros" #value3 >Otro<br><br>
+                </form>            
+        </div> -->
+<!-- </nav> -->
+
+<div class="mapacontenedor">
+ <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="example-sidenav" >
+            <strong class="item titulo-side-nav"> OFERTAS </strong>
+          <div *ngFor="let oferta of ofertas" class="cardos card border-success mb-5" style="max-width: 30rem;">
+                <img class="card-img-top" [src]="oferta.foto" alt="Card image cap">
+                <div class="card-header"><h3>{{oferta.producto}}</h3></div>
+                <div class="card-body text-success">
+                        <h5 class="card-text"> <strong>DESCUENTO DE: </strong>{{oferta.descuento}}</h5>
+                        <h5 class="card-text"> <strong>TOTAL A PAGAR:  </strong> {{oferta.valor}} pesos</h5>  
+                </div>
+                <div class="card-body text-danger">
+                  <!-- <h5 class="card-title">{{oferta.detalle}}</h5> -->
+                  <h5 class="card-text md-3"> DESDE: {{oferta.fechainicio}}</h5>
+                  <h5 class="card-text"> <strong>HASTA: </strong> {{oferta.fechafinal}}</h5>  
+                </div>
+            </div>
+        </mat-drawer>
+      
+        <div class="contenido">
+            <div class="desplegar">
+                    <button class="btn-view" type="button" mat-button (click)="drawer.toggle()">
+                          <strong> > </strong>  
+                    </button>
+            </div>        
+            <div class="mapa">
+                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+                        <agm-marker  *ngFor="let nego of negocios" [latitude]="+nego.latitud" [longitude]="+nego.longitud">
+                        <agm-info-window>
+                            <div class="card text-center" style="width: 18rem;">
+                                <img class="card-img-top" [src]="nego.foto" alt="Card image cap">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{nego.nombre_negocio}}</h3>
+                                    <h5 class="card-text"><strong>  {{nego.detalle}} </strong></h5>
+                                    <button  class="btn btn-link" (click)="drawer.toggle(); buscarofertas(nego.idnegocio)">VER OFERTAS</button>
+                                </div>
+                            </div>            
+                        </agm-info-window>
+                    </agm-marker>
+                </agm-map>
+            </div>
+        </div>
+    </mat-drawer-container>
+</div>
+   

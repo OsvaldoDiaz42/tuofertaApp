@@ -1,0 +1,20 @@
+/* .jumbotron{
+    background-color: #e3f2fd;
+    font-size: 300%;
+    text-align: right;
+    font-style: italic;
+} */
+
+.hola{
+    padding: 20px;
+}
+
+.jumbotron {
+    height: 60px;
+    background-color:rgb(61, 139, 135);
+    text-align: center;
+    color:white;
+    font-size: 300%;
+    font-style: italic;
+    
+  }

@@ -1,0 +1,103 @@
+ 
+@font-face {
+font-family: Lobster;
+src: url("/assets/font/Western_Bang_Bang.otf") format("opentype");
+} 
+ 
+
+
+agm-map {
+    height: 650px;
+    border: 5px solid rgba(0, 0, 0, 0.5);
+    
+}
+
+.item {
+    color: black;
+    font-size: 20px;
+
+}
+
+.jumbotron {
+    height: 5%;
+    background-color:rgb(61, 139, 135);
+    text-align: center;
+    color:white;
+    font-size: 300%;
+    font-style: italic;
+    
+}
+.mapacontenedor {
+    height: 95%;
+}
+.navbar {
+    background-color:rgb(61, 139, 135);
+    font-family: Lobster;
+}
+
+.titulo-side-nav {
+    float: none;
+    text-align: center;
+    font-family: Lobster;
+    font-size: 50px;
+}
+
+.cerrar {
+    float: right;
+}
+
+.example-container {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+    background-color: aquamarine;
+    width: 27%;
+  }
+
+  .desplegar {
+      width: 2.5%;
+  }
+  .contenido{
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .mapa {
+      width: 97.5%;
+  }
+
+  .btn-view {
+      height: 100%;
+      width: 100%;
+  }
+
+  h3 h5 {
+     font-family: Lobster; 
+  }
+
+  .card-body  {
+        text-align: center;
+  }
+
+  .card-header {
+    text-align: center;
+}
+.card-tittle {
+    text-align: center;
+}
+
+.cardos {
+    background-color: lightblue;
+}
+
+
+
+.h1 {
+    color: white;
+}

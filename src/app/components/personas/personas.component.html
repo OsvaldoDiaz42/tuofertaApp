@@ -1,0 +1,44 @@
+<div>
+  <button routerLink="/registrarPersona" type="button" class="btn btn-success" ><i class="fas fa-plus"></i></button> 
+</div>
+<div style="aligned:center;" >
+  <table class="table col-sm-12">
+      <thead>
+          <tr>
+            <!-- <th scope="col-sm-1">ID</th> -->
+            <th scope="col-sm-1">NOMBRE</th>
+            <th scope="col-sm-1">APELLIDO</th>
+            <th scope="col-sm-2">CORREO</th>
+            <!-- <th scope="col-sm-1">CONTRASENA</th> -->
+            <th scope="col-sm-1">TELEFONO</th>
+            <th scope="col-sm-1">CIUDAD</th>
+            <th scope="col-sm-1">GENERO</th>
+            <th scope="col-sm-1">ROL</th>
+            <th scope="col-sm-1">ESTADO</th>
+            <!-- <th scope="col-sm-1">TOKEN</th> -->
+            <th scope="col-sm-1"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of respuesta">
+            <!-- <td>{{i.id}}</td> -->
+            <td>{{i.nombre}}</td> 
+            <td>{{i.apellidos}}</td> 
+            <td>{{i.correo}}</td> 
+            <!-- <td>{{i.contrasena}}</td>  -->
+            <td>{{i.telefono}}</td>
+            <td>{{i.ciudad}}</td> 
+            <td>{{i.genero}}</td> 
+            <td>{{i.rol}}</td> 
+            <td>{{i.estado}}</td> 
+            <!-- <td>{{i.token}}</td>  -->
+            <td>
+              <button type="button" class="btn btn-danger" (click)="deleteuser(i.id)" ><i class="far fa-trash-alt"></i></button>
+              <button type="button" class="btn btn-info" > <i class="fas fa-marker"></i> </button>
+            </td>
+            
+          </tr>
+        </tbody>
+  </table>  
+</div>

@@ -1,0 +1,176 @@
+
+<div *ngFor="let i of persona">
+  <div class="row">
+    <h1 class="titulo">REGISTRO DE PERSONAS</h1>
+  </div>
+  <div class="row ">
+    <div *ngIf="mensajeError" class="alert alert-danger" role="alert">
+      {{mensajeError}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4">
+      <img class="img-fluid" src="assets/img/logo.png" alt=""> 
+    </div>
+  <div class="col-md-7 col-lg-7 col-xl-7 col-sm-7">
+    <div class="row">
+      <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
+        <i class="material-icons prefix m-2">account_circle</i>        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre"  [(ngModel)] = "i.nombre">
+      </div>
+      <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
+        <i class="material-icons prefix m-2">account_circle</i>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" placeholder="Ingrese su apellidos"  [(ngModel)] = "i.apellidos">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
+        <i class="material-icons prefix m-2">mail</i>
+        <label for="correo">Correo</label>
+        <input type="email" class="form-control" id="correo" placeholder="Ingrese su correo"  [(ngModel)] = "i.correo">
+      </div>
+      <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
+          <i class="material-icons prefix m-2">vpn_key</i>
+        <label for="password">Contraseña</label>
+        <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña"  [(ngModel)] = "i.contrasena">
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-3 col-lg-3 col-xl-3 col-sm-3">
+        <i class="material-icons prefix m-2">add_location</i>
+        <label for="ciudad">Ciudad</label>
+        <input type="text" class="form-control" id="ciudad" placeholder="Ingrese una ciudad de referencia"  [(ngModel)] = "i.ciudad">
+      </div>
+      
+    </div>
+    <div class="row">
+      <div *ngIf="bandera as true">
+        <div class="form-group col-md-8 col-lg-8 col-xl-8 col-sm-8">
+            <i class="material-icons prefix m-2">phone_forwarded</i>
+            <label for="telefono">Telefono</label>
+            <input type="number" class="form-control" id="telefono" placeholder="Ingrese su numero telefonico"  [(ngModel)] = "i.telefono">
+        </div>
+        <div class="form-group col-md-8 col-lg-8 col-xl-8 col-sm-8">
+            <div class="row">
+                <div class="col">
+                    <label for="password">Genero</label>
+                </div>
+                <div class="col">
+                  <input type="radio" name="gender" value="M" [(ngModel)] = "i.genero" checked> Masculino
+                </div>
+                <div class="col">
+                  <input type="radio" name="gender" value="F" [(ngModel)] = "i.genero"> Femenino
+                </div>
+                <div class="col">
+                  <input type="radio" name="gender" value="L" [(ngModel)] = "i.genero"> LGBT 
+                </div>
+            </div>   
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6 col-lg-6 col-xl-6 col-sm-6">
+            <button type="button" class="btn btn-primary" (click)="tabla()">CREAR USUARIO</button>
+            <button type="button" class="btn btn-warning" (click)="usertoadmin()">TENGO UN NEGOCIO !!!</button>
+        </div>
+    </div>
+  </div>
+  
+</div>
+<div class="row ">
+  <div *ngIf="mensaje" class="alert alert-success" role="alert">
+    {{mensaje}}
+  </div>
+</div>
+    
+</div> 
+
+ 
+ 
+ 
+ 
+ 
+ <!-- <form [formGroup] = "form">  -->
+   
+    <!-- <div class="form-row" formGroupName = "persona">
+      <div class="form-group col-md-6">
+        <label for="nombre"> Nombre </label>  
+        <input type="text" nombre="nombre" class="form-control"
+        formControlName="nombre" id="nombre" placeholder="Ingrese su Nombre">
+        <!-- <div *ngIf="form.get('nombre').invalid && form.get('nombre').touched" class="error-text"> -->
+          <!-- <span *ngIf="form.get('nombre').hasError('required')"> Este campo es requerido </span>
+          <span *ngIf="form.get('nombre').hasError('maxlength')"> La longitud maxima es 15</span>    
+        </div> 
+      </div>  
+    </div> 
+
+    <div class="form-row" formGroupName = "persona">
+        <div class="form-group col-md-6">
+          <label for="exampleInputEmail4"> Apellidos </label>  
+          <input type="text" name="apellidos" class="form-control"
+          formControlName="apellidos" id="apellidos" placeholder="Ingrese sus apellidos">
+          <div *ngIf="form.get('apellidos').invalid && form.get('apellidos').touched" class="error-text">
+            <span *ngIf="form.get('apellidos').hasError('required')"> Este campo es requerido </span>
+            <span *ngIf="form.get('apellidos').hasError('maxlength')"> La longitud maxima es 15</span>    
+          </div> 
+        </div>  
+      </div>
+
+    <div class="form-row" formGroupName = "persona">
+      <div class="form-group col-md-6">
+        <label for="exampleInputEmail4"> Correo </label>  
+        <input type="email" name="email" class="form-control"
+        formControlName="correo" id="correo" placeholder="Ingrese su Correo Electronico">
+        <div *ngIf="form.get('correo').invalid && form.get('correo').touched" class="error-text">
+          <span *ngIf="form.get('correo').hasError('required')"> Este campo es requerido </span>
+          <span *ngIf="form.get('correo').hasError('email')"> La informacion no tiene formato de correo </span>    
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row" formGroupName = "persona">
+        <div class="form-group col-md-6">
+          <label for="exampleInputEmail4"> Contraseña </label>  
+          <input type="password" name="contrasena" class="form-control"
+          formControlName="contrasena" id="contrasena" placeholder="Ingrese su Contraseña">
+          <div *ngIf="form.get('contrasena').invalid && form.get('contrasena').touched" class="error-text">
+            <span *ngIf="form.get('contrasena').hasError('required')"> Este campo es requerido </span>
+          </div> 
+        </div>
+      </div>
+
+     <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="exampleInputEmail4"> Phone </label>  
+          <input type="text" name="phone" class="form-control"
+          formControlName="phone" id="exampleInputEmail4"placeholder="Ingrese numero TELEFONICO">
+          <div *ngIf="form.get('phone').invalid && form.get('name').touched" class="error-text">
+            <span *ngIf="form.get('phone').hasError('required')"> Este campo es requerido </span>
+            <span *ngIf="form.get('phone').hasError('maxlength')"> La longitud maxima es 10</span>    
+          </div>  
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="exampleInputEmail4"> Photo </label>  
+          <input type="text" name="photoName" class="form-control"
+          formControlName="photoName" id="exampleInputEmail4" placeholder="INGRESO UNA FOTO">
+          <div *ngIf="form.get('photoName').invalid && form.get('name').touched" class="error-text">
+            <span *ngIf="form.get('photoName').hasError('required')"> Este campo es requerido </span>
+          </div> 
+        </div>
+    </div>
+     
+    <button type="button" class="btn btn-primary" (click)="tabla()" [disabled]="!form.valid">CREAR USUARIO</button>
+  </form>
+  <div class="alert alert-success" role="alert" *ngIf="bandera">
+      {{mensaje}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <p>{{ form.value | json}}</p>
+    
+
+  </div>
+  -->

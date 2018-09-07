@@ -1,0 +1,128 @@
+
+<div *ngFor="let i of data">
+    <div class="row">
+      <h1 class="titulo">ACTUALIZAR NEGOCIO</h1>
+    </div>
+    <div class="row">
+    <div class="col-4">
+        <img src="assets/img/logo.png" alt=""> 
+    </div>
+    <div class="col-6">
+      <div class="row">
+          <!-- <div class="input-field col s6">
+              <i class="material-icons prefix">account_circle</i>
+              <input id="icon_prefix" type="text" class="validate" [(ngModel)] = "i.nombre_negocio">
+              <label for="icon_prefix">NOMBRE DEL NEGOCIO</label>
+          </div> -->
+          <div class="form-group col-6">
+              <i class="material-icons prefix m-2">account_circle</i>
+              <label for="icon_prefix">NOMBRE DEL NEGOCIO</label>
+              <input type="text" class="form-control" id="nombre_negocio" placeholder="NOMBRE DEL NEGOCIO"  [(ngModel)] = "i.nombre_negocio"> 
+          </div>
+      </div>
+      <div class="row">
+          <!-- <div class="input-field col s6">
+              <i class="material-icons prefix">format_list_numbered</i>
+              <input id="icon_prefix" type="text"  [(ngModel)] = "i.nit">
+              <label for="icon_prefix">NIT</label>
+          </div>
+          <div class="input-field col s6">
+              <i class="material-icons prefix">phone_forwarded</i>
+              <input id="icon_prefix" type="number"   [(ngModel)] = "i.telefono">
+              <label for="icon_prefix">TELEFONO</label>
+          </div> -->
+            <div class="form-group col-3">
+                <i class="material-icons prefix m-2">format_list_numbered</i>
+                <label for="nit">NIT</label>
+                <input type="number" class="form-control" id="nit" placeholder="NIT DEL NEGOCIO"  [(ngModel)] = "i.nit">
+              </div>
+              <div class="form-group col-3">
+                  <i class="material-icons prefix m-2">phone_forwarded</i>
+                  <label for="telefono">TELEFONO</label>
+                  <input type="number" class="form-control" id="telefono" placeholder="TELEFONO DEL NEGOCIO"  [(ngModel)] = "i.telefono">
+                </div>
+      </div> 
+      <div class="row">
+          <!-- <div class="input-field col s6">
+              <i class="material-icons prefix">mail</i>
+              <input id="icon_prefix" type="email" [(ngModel)] = "i.correo">
+              <label for="icon_prefix">CORREO</label>
+          </div> -->
+          <div class="form-group col-6">
+              <i class="material-icons prefix m-2">mail</i>
+              <label for="correo">CORREO</label>
+              <input type="email" class="form-control" id="correo" placeholder="CORREO DEL NEGOCIO"  [(ngModel)] = "i.correo">
+            </div>
+    
+      </div>
+      <div class="row">
+          <!-- <div class="input-field col s6">
+              <i class="material-icons prefix">add_location</i>
+              <input id="ubicacion" type="text" [(ngModel)] = "i.ubicacion">
+              <label for="icon_prefix">UBICACION</label>
+          </div> -->
+          <div class="form-group col-6">
+              <i class="material-icons prefix m-2">add_location</i>
+              <label for="ubicacion">UBICACION</label>
+              <input type="text" class="form-control" id="ubicacion" placeholder="UBICACION DEL NEGOCIO"  [(ngModel)] = "i.ubicacion">
+            </div>
+    
+      </div> 
+      <div class="row">
+          <!-- <div class="input-field col s6">
+              <i class="material-icons prefix">details</i>
+              <input id="detalle" type="text" [(ngModel)] = "i.detalle">
+              <label for="icon_prefix">DETALLE</label>
+          </div> -->
+          <div class="form-group col-6">
+              <i class="material-icons prefix m-2">details</i>
+              <label for="detalle">DETALLES</label>
+              <input type="text" class="form-control" id="detalle" placeholder="DETALLES"  [(ngModel)] = "i.detalle">
+            </div>
+    
+      </div>
+      <div class="row">
+          <!-- <div class="input-field col s6">
+              <i class="material-icons prefix">add_a_photo</i>
+              <input id="foto" type="text" [(ngModel)] = "i.foto">
+              <label for="icon_prefix">FOTO</label>
+          </div> -->
+          <div class="form-group col-6 ">
+            
+                <i class="material-icons prefix m-2">add_a_photo</i>
+                <label for="apellidos">FOTO</label>
+                <input type="text" class="form-control" id="foto" placeholder="Ingrese su foto"  [(ngModel)] = "i.foto">
+            
+              
+            </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-3">
+          <div >
+              <label for="tipo">TIPO</label>
+          </div>
+         
+        </div>
+        <div class="form-group col-3">
+            <div >
+                <br>
+                <input type="radio" name="gender" value="RESTAURANTE" [(ngModel)] = "i.tipo" > RESTAURANTE <br>
+                <input type="radio" name="gender" value="HOTEL" [(ngModel)] = "i.tipo"> HOTEL<br>
+                <input type="radio" name="gender" value="BAR" [(ngModel)] = "i.tipo"> BAR<br>
+                <input type="radio" name="gender" value="ALMACEN" [(ngModel)] = "i.tipo"> ALMACEN<br>
+                <input type="radio" name="gender" value="OTROS" [(ngModel)] = "i.tipo"> Otros <br>
+            </div>
+           
+        </div>
+       
+      </div>
+      <div class="row">
+          <div class="form-group col-md-6">
+              <button type="button" class="btn btn-success" (click)="tabla()">ACTUALIZAR</button> 
+          </div>
+      </div>
+     
+    </div>
+    <div class="col-3"></div>
+    </div>
+    </div>

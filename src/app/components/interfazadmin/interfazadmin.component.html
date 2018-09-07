@@ -1,0 +1,74 @@
+<div class="row">
+        <div class="col-3 hola">
+                <img src="assets/img/logo.png" alt="">   
+                <!-- <aside class="nav-expanded nav-lock nav-collapsible"> -->
+                    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">                  
+                                   
+                        <ul class="list-group list-group-flush fluid">
+                            <!-- <li class="list-group-item list-group-item-secondary"> -->
+                                <!-- <div class="col"> -->
+                                    <a  (click)="switchContainer('1')" >
+                                            <i class="material-icons m-3">accessibility</i>
+                                            <span class="nav-text">PERFIL</span>
+                                    </a>
+                                <!-- </div> -->
+                            <!-- </li> -->
+                            <!-- <li class="list-group-item"> -->
+                                <a  (click)="switchContainer('2')">
+                                    <i class="material-icons m-3">domain</i>
+                                    <span class="nav-text">MIS NEGOCIOS</span>
+                                </a>
+                            <!-- </li> -->
+                            <!-- <li class="list-group-item"> -->
+                                    <!-- <a  (click)="switchContainer('3')">
+                                        <i class="material-icons m-3">settings_input_component</i>
+                                        <span class="nav-text">MIS OFERTAS</span>
+                                    </a> -->
+                            <!-- </li> -->
+                            <!-- <li class="list-group-item"> -->
+                                    <a   (click)="switchContainer('4')">
+                                        <i class="material-icons m-3">control_camera</i>
+                                        <span class="nav-text">OTRAS OFERTAS</span>
+                                    </a>
+                            <!-- </li> -->
+                            <!-- <li class="list-group-item"> -->
+                                    
+                            <!-- </li> -->
+                        </ul>
+
+                        
+                                 
+                            
+                    </nav>
+                    <a   (click)="switchContainer('4')">
+                        <button class="btn btn-danger" (click)="signOut()"><i class="fab fa-close" >CERRAR SESION</i> </button>
+                    </a>
+
+                
+                <!-- </aside> -->
+                
+        </div>
+        <div class="col-9">
+                <section>
+                        <div [ngSwitch]="currentContainer">
+                        <div class="jumbotron jumbotron-fluid" *ngFor="let i of respuesta">
+                           <p class="text-info text-center"> BIENVENID@   <strong>{{i.nombre}}</strong></p>
+                        </div>
+
+                        <app-negocios *ngSwitchCase="'listaPersonas'" ></app-negocios>
+                    <!-- <app-personas *ngSwitchCase="'listaNegocios'"></app-personas> -->
+                        <app-negociosadmin *ngSwitchCase="'listaNegocios'" ></app-negociosadmin>
+                        <app-ofertasadmin *ngSwitchCase="'ofertasPropias'"></app-ofertasadmin>
+                         <!-- <app-perfil *ngSwitchCase="'perfil'"></app-perfil>
+                        <app-registra-negocios *ngSwitchCase="'registronegocio'"></app-registra-negocios> -->
+                        <!-- <app-listar-negocios *ngSwitchCase="'listarnegocio'"></app-listar-negocios>
+                        <app-informacion *ngSwitchCase="'informacion'"></app-informacion>  -->
+                        
+                        </div>
+                        
+                </section>
+        </div>
+</div>
+
+
+

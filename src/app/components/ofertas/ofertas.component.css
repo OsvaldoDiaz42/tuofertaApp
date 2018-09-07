@@ -1,0 +1,31 @@
+.botones {
+    float: right;
+    
+}
+
+.mapa {
+    height: 700px;
+    width: 1200px;
+    /* border: 10px black solid; */
+}
+
+.tabla {
+    /* border: 10px black solid; */
+}
+
+agm-map {
+    height: 650px;
+
+    
+}
+
+
+.jumbotron {
+    height: 60px;
+    background-color:rgb(61, 139, 135);
+    text-align: center;
+    color:aliceblue;
+    font-size: 300%;
+    font-style: italic;
+    
+}
