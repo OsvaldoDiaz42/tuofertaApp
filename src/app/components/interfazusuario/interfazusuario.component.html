@@ -17,18 +17,29 @@
                     <strong class="item m-2">TIPO DE NEGOCIO</strong>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <input (change)="aplicar(value1.value)" class="m-2" type="checkbox" name="RESTAURANTE" value="RESTAURANTE" #value1> <strong class="item">Restaurante</strong>  <br>
+                        <input (change)="aplicar(value1.value); tipoNegocioSelected()" class="m-2" type="checkbox" name="RESTAURANTE" value="RESTAURANTE" #value1> <strong class="item">Restaurante</strong>  <br>
                         <div class="dropdown-divider"></div>
-                        <input (change)="aplicar(value2.value)" class="m-2" type="checkbox" name="BAR" value="BAR" #value2 > <strong class="item">Bar</strong><br>
+                        <input (change)="aplicar(value2.value); tipoNegocioSelected()" class="m-2" type="checkbox" name="BAR" value="BAR" #value2 > <strong class="item">Bar</strong><br>
                         <div class="dropdown-divider"></div>
-                        <input (change)="aplicar(value3.value)" class="m-2" type="checkbox" name="ALMACEN" value="ALMACEN" #value3 > <strong class="item">Almacen</strong><br>
+                        <input (change)="aplicar(value3.value); tipoNegocioSelected()" class="m-2" type="checkbox" name="ALMACEN" value="ALMACEN" #value3 > <strong class="item">Almacen</strong><br>
                         <div class="dropdown-divider"></div>
-                        <input (change)="aplicar(value4.value)" class="m-2" type="checkbox" name="HOTEL" value="HOTEL" #value4 >  <strong class="item">hotel</strong> <br>
+                        <input (change)="aplicar(value4.value); tipoNegocioSelected()" class="m-2" type="checkbox" name="HOTEL" value="HOTEL" #value4 >  <strong class="item">hotel</strong> <br>
                         <div class="dropdown-divider"></div>
-                        <input (change)="aplicar(value5.value)" class="m-2" type="checkbox" name="OTRO" value="OTRO" #value5 > <strong class="item">Otro</strong><br>
+                        <input (change)="aplicar(value5.value); tipoNegocioSelected()" class="m-2" type="checkbox" name="OTRO" value="OTRO" #value5 > <strong class="item">Otro</strong><br>
                   </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" *ngIf="flagOfertasFilter">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <strong class="item m-2">OFERTA</strong>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <input (change)="aplicar(value6.value); filtroOfer1 = !filtroOfer1" class="m-2" type="checkbox" name="Descuento" value="Descuento" #value6> <strong class="item">Descuento</strong>  <br>
+                            <div class="dropdown-divider"></div>
+                            <input (change)="aplicar(value7.value); filtroOfer2 = !filtroOfer2" class="m-2" type="checkbox"  name="Promocion" value="Promocion" #value7 > <strong class="item">Promocion</strong><br>
+                            <div class="dropdown-divider"></div>
+                    </div>
+                </li>
+                <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <strong class="item m-2">OFERTAS</strong>
                         </a>
@@ -38,7 +49,7 @@
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                      </li>
+                      </li> -->
                 
               </ul>
               

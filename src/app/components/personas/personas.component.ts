@@ -13,6 +13,8 @@ export class PersonasComponent implements OnInit {
   public num; 
   public mensaje:string = "hola";
   public form:FormGroup; 
+  public countAdmin = 0;
+  public countUsers = 0;
 
   constructor(
     //private fb:FormBuilder,
@@ -26,10 +28,22 @@ export class PersonasComponent implements OnInit {
   }
 
   fillTable(){
+    this.countAdmin = 0;
+    this.countUsers = 0;
     this.service.getPeoples().subscribe(
      response =>{
         console.log(response);
-        this.respuesta = response.persona;  
+        this.respuesta = response.persona;
+        for (const iterator of this.respuesta) {
+          if(iterator.rol === "ADMIN"){
+            this.countAdmin = this.countAdmin+1;
+          }else if(iterator.rol === "USER"){
+            this.countUsers = this.countUsers+1;
+          }  
+        }
+        
+        
+
     }, error => {
       console.log("NO CONEXION BASE DE DATOS");
     }

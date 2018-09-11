@@ -1,9 +1,9 @@
 <div class="jumbotron row">
-    <h1> OFERTAS <span>DE </span> NEGOCIO <span> INDIVIDUAL</span></h1>
+    <h1> OFERTAS <span>DE SU</span> NEGOCIO <span></span></h1>
 </div>
 
 <div class="row">
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i></button>
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus m-2"> AGREGAR OFERTA</i></button>
 </div>
 <div class="row" >
   <table class="table col-sm-12 table-striped">
@@ -17,6 +17,7 @@
             
             <th scope="col-sm-1">valor</th>
             <th scope="col-sm-1">descuento</th>
+            <th scope="col-sm-1">TIPO</th>
             <th scope="col-sm-1">fechainicio</th>
             <th scope="col-sm-1">fechafinal</th>
             <th scope="col-sm-1"></th>
@@ -38,6 +39,7 @@
             
             <td>{{i.valor}}</td> 
             <td>{{i.descuento}}</td> 
+            <td>{{i.tipo}}</td> 
             <td>{{i.fechainicio}}</td> 
             <td>{{i.fechafinal}}</td> 
             <!-- <td>{{i.ubicacion}}</td>  -->
@@ -73,14 +75,7 @@
                     <img class="img-fluid" src="assets/img/logo.png" alt=""> 
                   </div>
                   <div class="col-md-8 col-lg-8 col-xl-8 col-sm-8">
-                    <div class="row">
-                      <div class="form-group col-md-8 col-lg-8 col-xl-8 col-sm-8">
-                        
-                        <i class="fas fa-info m-2"></i>
-                        <label for="nombre">DETALLE</label>
-                        <input type="text" class="form-control" id="detalle" placeholder="DETALLE DE LA OFERTA"  [(ngModel)] = "i.detalle">
-                      </div>
-                    </div>
+                    
                     <div class="row">
                       <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
                         
@@ -96,6 +91,21 @@
                         <input type="file" (change)="onItemSelected($event)" class="form-control" id="foto" >
                        
                       </div>
+                    </div>
+                    <!-- <div class="row" >
+                        <strong class="m-2">TIPO: </strong>
+                        <br>
+                        <input type="radio" class="m-2" name="gender" value="Descuento" [(ngModel)] = "i.tipo" > DESCUENTO <br>
+                        <input type="radio" class="m-2" name="gender" value="Promocion" [(ngModel)] = "i.tipo"> PROMOCION <br>
+                    </div> -->
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">TIPO DE OFERTA</label>
+                            <select [(ngModel)] = "i.tipo" class="form-control" id="exampleFormControlSelect1">
+                              <option>Descuento</option>
+                              <option>Promocion</option>
+                            </select>
+                          </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
@@ -127,7 +137,14 @@
                           <input type="date" class="form-control" id="fechafinal" placeholder="HASTA CUANDO ES LA OFERTA"  [(ngModel)] = "i.fechafinal">
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="form-group col-md-8 col-lg-8 col-xl-8 col-sm-8">
+                          
+                          <i class="fas fa-info m-2"></i>
+                          <label for="nombre">DETALLE</label>
+                          <input type="text" class="form-control" id="detalle" placeholder="DETALLE DE LA OFERTA"  [(ngModel)] = "i.detalle">
+                        </div>
+                      </div>
                   </div> 
               </div>   
           </div> 
@@ -163,14 +180,7 @@
                   <img class="img-fluid" src="assets/img/logo.png" alt=""> 
                 </div>
                 <div class="col-md-8 col-lg-8 col-xl-8 col-sm-8">
-                  <div class="row">
-                    <div class="form-group col-md-8 col-lg-8 col-xl-8 col-sm-8">
-                      
-                      <i class="fas fa-info m-2"></i>
-                      <label for="nombre">DETALLE</label>
-                      <input type="text" class="form-control" id="detalle" placeholder="DETALLE DE LA OFERTA"  [(ngModel)] = "i.detalle">
-                    </div>
-                  </div>
+                  
                   <div class="row">
                     <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
                       
@@ -186,6 +196,21 @@
                       <input type="file" (change)="onItemSelected($event)" class="form-control" id="foto" >
                      
                     </div>
+                  </div>
+                  <!-- <div class="row" >
+                      <strong class="m-2">TIPO: </strong>
+                      <br>
+                      <input type="radio" class="m-2" name="gender" value="Descuento" [(ngModel)] = "i.tipo" > DESCUENTO <br>
+                      <input type="radio" class="m-2" name="gender" value="Promocion" [(ngModel)] = "i.tipo"> PROMOCION <br>
+                  </div> -->
+                  <div class="row">
+                      <div class="form-group">
+                          <label for="exampleFormControlSelect1">TIPO DE OFERTA</label>
+                          <select [(ngModel)] = "i.tipo" class="form-control" id="exampleFormControlSelect1">
+                            <option>Descuento</option>
+                            <option>Promocion</option>
+                          </select>
+                        </div>
                   </div>
                   <div class="row">
                     <div class="form-group col-md-4 col-lg-4 col-xl-4 col-sm-4">
@@ -217,7 +242,14 @@
                         <input type="date" class="form-control" id="fechafinal" placeholder="HASTA CUANDO ES LA OFERTA"  [(ngModel)] = "i.fechafinal">
                       </div>
                   </div>
-                  
+                  <div class="row">
+                      <div class="form-group col-md-8 col-lg-8 col-xl-8 col-sm-8">
+                        
+                        <i class="fas fa-info m-2"></i>
+                        <label for="nombre">DETALLE</label>
+                        <input type="text" class="form-control" id="detalle" placeholder="DETALLE DE LA OFERTA"  [(ngModel)] = "i.detalle">
+                      </div>
+                  </div>
                 </div> 
             </div>   
         </div> 

@@ -1,5 +1,5 @@
 <div>
-  <button routerLink="/registrarNegocio" type="button" class="btn btn-success" ><i class="fas fa-plus"></i></button> 
+  <button routerLink="/registrarNegocio" type="button" class="btn btn-success" ><i class="fas fa-plus">CREAR NEGOCIO</i></button> 
 </div>
 <div style="aligned:center;" >
   <table class="table col-sm-12">
@@ -40,7 +40,7 @@
             <!-- <td>{{i.detalle}}</td>  -->
             <td>
               <button type="button" class="btn btn-danger" (click)="deletenegocio(i.idnegocio)" ><i class="far fa-trash-alt"></i></button>
-             <button type="button" class="btn btn-info" > <i class="fas fa-marker"></i> </button>
+              <button type="button" class="btn btn-info" (click)="actualizar(i.idnegocio)"> <i class="fas fa-marker"></i> </button>
             </td>
             
           </tr>

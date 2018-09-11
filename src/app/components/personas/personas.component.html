@@ -1,5 +1,5 @@
 <div>
-  <button routerLink="/registrarPersona" type="button" class="btn btn-success" ><i class="fas fa-plus"></i></button> 
+  <button routerLink="/registrarPersona" type="button" class="btn btn-success" ><i class="fas fa-plus m-2"> AGREGAR UNA PERSONA</i></button> 
 </div>
 <div style="aligned:center;" >
   <table class="table col-sm-12">
@@ -35,10 +35,22 @@
             <!-- <td>{{i.token}}</td>  -->
             <td>
               <button type="button" class="btn btn-danger" (click)="deleteuser(i.id)" ><i class="far fa-trash-alt"></i></button>
-              <button type="button" class="btn btn-info" > <i class="fas fa-marker"></i> </button>
+              <!-- <button type="button" class="btn btn-info" > <i class="fas fa-marker"></i> </button> -->
             </td>
             
           </tr>
         </tbody>
   </table>  
+  <div class="jumbotron row">
+    <div class="col">
+        <strong>Tienes <h1>{{countAdmin}}</h1> Administradores Registrados</strong> 
+    </div>
+    <div class="col">
+        <strong>Tienes <h1>{{countUsers}}</h1> Usuarios Registrados</strong> 
+    </div>
+    
+    
+    
+  </div>
+ 
 </div>

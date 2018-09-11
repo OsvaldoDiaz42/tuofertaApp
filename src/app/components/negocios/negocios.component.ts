@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceNegociosService } from '../../services/service-negocios.service';
 import { Services } from '../../../../node_modules/@angular/core/src/view';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-negocios',
   templateUrl: './negocios.component.html',
@@ -12,6 +13,7 @@ export class NegociosComponent implements OnInit {
 
   constructor(
     private service:ServiceNegociosService,
+    public router:Router,
   ) { 
     this.fillTable();
   }
@@ -47,6 +49,10 @@ export class NegociosComponent implements OnInit {
         console.log("no se pudo eliminar el negocio")
       }
     )
+  }
+
+  actualizar(idactual:any){
+    this.router.navigate(['/actualizarNegocio', idactual ]);
   }
 
 }

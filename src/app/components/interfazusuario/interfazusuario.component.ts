@@ -24,6 +24,9 @@ export class InterfazusuarioComponent implements OnInit {
   filtros: any[] = [];
   negociosM: any[] = [];
   fechaoferta: string;
+  filtroOfer1:boolean = false;
+  filtroOfer2:boolean = false;
+  flagOfertasFilter:boolean = false;
 
   constructor(
     private servicioOfertas:ServiceOfertasService,
@@ -38,25 +41,29 @@ export class InterfazusuarioComponent implements OnInit {
     });
     this.getUser(this.id);
     this.getNegocios();
+    
   }
  
 
   ngOnInit() {
   }
   
-  getNegocios(){
+getNegocios(){
     this.servicioNegocios.getnegocios().subscribe(
       data1 => {
           for (const iterator of data1.negocio) {
               const idnegocio = iterator.idnegocio;
               this.servicioOfertas.getOfertasIdnegocio(idnegocio).subscribe(
-                  data3 => {
-                      let data: any[];
-                      data = data3.oferta;
-                      if (data.length !== 0) {
+                data3 => {
+                    let data: any[];
+                    data = data3.oferta;
+                    for (const oferta of data) {   
+                        if(this.compararFecha(oferta.fechafinal)){
                           this.negocios.push(iterator);
-                          console.log(this.negocios);
-                      }
+                        }else{
+                          //console.log("********************");
+                        }
+                    }
                   }
               );
           }
@@ -64,17 +71,27 @@ export class InterfazusuarioComponent implements OnInit {
     );
   }
 
+  tipoNegocioSelected(){
+    if (this.filtros.length > 0) {
+      this.flagOfertasFilter = true;     
+    }else{
+      this.flagOfertasFilter = false;
+    }
+    console.log(this.flagOfertasFilter);
+    
+  }
+
   buscarofertas(idnegocio) {
     let fecha = new Date();
-    let diaPresente = fecha.getDay() + 2 ;
+    let diaPresente = +fecha.getDate();
     let mesPresente = +fecha.getMonth() + 1;
     let anoPresente = +fecha.getFullYear();
-
+    //console.log( fecha.getDate()+"actual: "+diaPresente+"--"+mesPresente+"--"+anoPresente);
     this.servicioOfertas.getOfertasIdnegocio(idnegocio).subscribe(
       data => {
           this.ofertas = [];
           for (const oferta of data.oferta) {
-            console.log(oferta);
+            
             
               this.fechaoferta = oferta.fechafinal;
               let separador = this.fechaoferta.split("-");
@@ -82,15 +99,105 @@ export class InterfazusuarioComponent implements OnInit {
               let mesOferta = +separador[1];
               let diaOferta = +separador[2];
               
-              if ( anoOferta >= anoPresente && mesOferta >= mesPresente && diaOferta >= diaPresente ) {
-                //console.log('Esta oferta no ha vencido.' + oferta);
+              if ( anoOferta > anoPresente ) {
+                if (!this.ofertas.includes(oferta)) {
+                  this.ofertas.push(oferta);
+                }
+              } else if (anoOferta === anoPresente && mesOferta > mesPresente ) {
+                if (!this.ofertas.includes(oferta)) {
+                  this.ofertas.push(oferta);
+                }
+              } else if (mesOferta === mesPresente && diaOferta >= diaPresente ) {
                 if (!this.ofertas.includes(oferta)) {
                   this.ofertas.push(oferta);
                 }
               }
+    
           }
+
+          // for (const oferta of data.oferta) {
+          //     this.fechaoferta = oferta.fechafinal;
+          //     let separador = this.fechaoferta.split("-");
+          //     let anoOferta = +separador[0];
+          //     let mesOferta = +separador[1];
+          //     let diaOferta = +separador[2];
+          //   if (this.filtroOfer1 === true || this.filtroOfer2 === true) {
+
+          //     if ( anoOferta > anoPresente ) {
+          //       if (!this.ofertas.includes(oferta)) {
+          //         if (this.filtros.includes(oferta.tipo)) {
+          //           this.ofertas.push(oferta);
+          //         }
+          //       }
+          //     } else if (anoOferta === anoPresente && mesOferta > mesPresente ) {
+          //       if (!this.ofertas.includes(oferta)) {
+          //         if (this.filtros.includes(oferta.tipo)) {
+          //           this.ofertas.push(oferta);
+          //         }
+          //       }
+          //     } else if (mesOferta === mesPresente && diaOferta >= diaPresente ) {
+          //       if (!this.ofertas.includes(oferta)) {
+          //         if (this.filtros.includes(oferta.tipo)) {
+          //           this.ofertas.push(oferta);
+          //         }
+          //       }
+          //     }
+  
+          //   } else {
+  
+          //     if ( anoOferta > anoPresente ) {
+          //       if (!this.ofertas.includes(oferta)) {
+          //           this.ofertas.push(oferta);
+          //       }
+          //     } else if (anoOferta === anoPresente && mesOferta > mesPresente ) {
+          //       if (!this.ofertas.includes(oferta)) {
+          //           this.ofertas.push(oferta);
+          //       }
+          //     } else if (mesOferta === mesPresente && diaOferta >= diaPresente ) {
+          //       if (!this.ofertas.includes(oferta)) {
+          //           this.ofertas.push(oferta);
+          //       }
+          //     }
+  
+          //   }
+  
+          // }
     });
   }
+
+
+compararFecha(fechaOferta: string): boolean {
+    let fecha = new Date();
+    
+    
+    let diaPresente = +fecha.getDate();
+    let mesPresente = +fecha.getMonth() + 1;
+    let anoPresente = +fecha.getFullYear();
+    // fechaoferta = fechaOferta;
+    let separador = fechaOferta.split("-");
+    let anoOferta = +separador[0];
+    let mesOferta = +separador[1];
+    let diaOferta = +separador[2];
+    //console.log(fechaOferta+"xx"+anoPresente+mesPresente+diaPresente);
+    if ( anoOferta > anoPresente ) {
+      // if (!this.ofertas.includes(oferta)) {
+      //   this.ofertas.push(oferta);
+      // }
+      return true;
+    } else if (anoOferta === anoPresente && mesOferta > mesPresente ) {
+      // if (!this.ofertas.includes(oferta)) {
+      //   this.ofertas.push(oferta);
+      // }
+      return true;
+    } else if (mesOferta === mesPresente && diaOferta >= diaPresente ) {
+      // if (!this.ofertas.includes(oferta)) {
+      //   this.ofertas.push(oferta);
+      // }
+      return true;
+    }
+    return false;
+    
+}
 
 
   getOfertas(){
@@ -123,7 +230,7 @@ export class InterfazusuarioComponent implements OnInit {
     )
   }
 
-  aplicar(negocio: string) {
+  aplicar(negocio?: string) {
 
     if (this.filtros.includes(negocio)) {
       const position = this.filtros.indexOf(negocio);
@@ -139,14 +246,54 @@ export class InterfazusuarioComponent implements OnInit {
         const tipo = negocio1.tipo;
         this.servicioOfertas.getOfertasIdnegocio(idnegocio).subscribe(
           data3 => {
-          let data: any[];
-          data = data3.oferta;
-          if (this.filtros.includes(tipo) && data.length !== 0) {
-            this.negocios.push(negocio1);
-          }
-        }, error=>{
+              let data: any[];
+              data = data3.oferta;
+              for (const oferta of data) {   
+                  console.log("tipos de ofertas "+oferta.tipo);
+                  if (this.filtros.includes(tipo) && data.length !== 0) {
+                      if (this.filtroOfer1 === true || this.filtroOfer2 === true) {
+                      console.log('Estoy aqui');
+                      if (this.filtros.includes(oferta.tipo)) {
+                        //
+
+                          if(this.compararFecha(oferta.fechafinal)){
+                            console.log("##");
+                            this.negocios.push(negocio1);
+                          }else{
+                            console.log("****************");
+                            
+                          }
+                        //
+                          // this.negocios.push(negocio1);
+                        //
+                          }
+                      } 
+                      else {
+                        if(this.compararFecha(oferta.fechafinal)){
+                          console.log("##");
+                          this.negocios.push(negocio1);
+                        }else{
+                          console.log("********************");
+                          
+                        }
+                        //  this.negocios.push(negocio1);
+                      }
+                  }
+              }
 
         });
+
+        // this.servicioOfertas.getOfertasIdnegocio(idnegocio).subscribe(
+        //   data3 => {
+        //   let data: any[];
+        //   data = data3.oferta;
+        //   if (this.filtros.includes(tipo) && data.length !== 0) {
+        //     this.negocios.push(negocio1);
+        //   }
+        // }, error=>{
+
+        // });
+        
       }
 
       if (this.filtros.length === 0) {
@@ -155,13 +302,16 @@ export class InterfazusuarioComponent implements OnInit {
               for (const iterator of data1.negocio) {
                   const idnegocio = iterator.idnegocio;
                   this.servicioOfertas.getOfertasIdnegocio(idnegocio).subscribe(
-                      data3 => {
-                          let data: any[];
-                          data = data3.oferta;
-                          if (data.length !== 0) {
+                    data3 => {
+                        let data: any[];
+                        data = data3.oferta;
+                        for (const oferta of data) {   
+                            if(this.compararFecha(oferta.fechafinal)){
                               this.negocios.push(iterator);
-                              console.log(this.negocios);
-                          }
+                            }else{
+                              //console.log("********************");
+                            }
+                        }
                       }
                   );
               }
@@ -173,3 +323,31 @@ export class InterfazusuarioComponent implements OnInit {
 
 
 }
+/*
+ filtrarNegocios(filtros: any) {
+this.negocios = [];
+this.ofertas = [];
+this.listar.getNegocios().subscribe((data) => {
+data.forEach((negocios) => {
+for (let i = 0; i < filtros[0].length; i++) {
+if (negocios.tipo == filtros[0][i] || filtros[0] == 'Todas') {
+this.listar.getOfertasPorIdNegocio(negocios.idnegocio).subscribe((data2) => {
+if (data2.length > 0) {
+data2.forEach((oferta) => {
+for (let j = 0; j < filtros[1].length; j++) {
+if (oferta.tipo == filtros[1][j] || filtros[1] == 'Todas') {
+if (this.compararFechas(oferta.fecha_fin)) { //true: activo
+this.negocios.push(negocios);
+this.ofertas.push(oferta);
+}
+}
+}
+});
+}
+});
+}
+}
+});
+});
+} 
+*/ 

@@ -36,6 +36,7 @@ export class OfertasadminComponent implements OnInit {
     descuento: "",
     fechainicio: "",
     fechafinal: "",
+    tipo: "",
   };
   persona: any[] = [this.usuario];
   base:Object = {oferta: this.persona};
@@ -61,6 +62,7 @@ export class OfertasadminComponent implements OnInit {
     descuento: "",
     fechainicio: "",
     fechafinal: "",
+    tipo: "",
   };
   oferta: any[] = [this.ofertas];
   base1:Object = {oferta: this.oferta};
@@ -197,6 +199,7 @@ confirmarActualizar(){
     this.oferta[0].producto = this.persona[0].producto;
     this.oferta[0].foto = this.persona[0].foto;
     this.oferta[0].valor = this.persona[0].valor;
+    this.oferta[0].tipo = this.persona[0].tipo;
     this.oferta[0].descuento = this.persona[0].descuento;
     this.oferta[0].fechainicio = this.persona[0].fechainicio;
     this.oferta[0].fechafinal = this.persona[0].fechafinal;
@@ -204,7 +207,7 @@ confirmarActualizar(){
     this.service.actualizarOferta(this.id, this.base1).subscribe(
       response=>{
         console.log("ACTUALIZADO SATISFACTORIAMENTE");
-         this.fillTable();
+         //this.fillTable();
       }, error=>{
         console.error("NO ACTUALIZADO");
         // this.getOfertas();
